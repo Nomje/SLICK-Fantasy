@@ -1,13 +1,14 @@
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Bet
-from django.shortcuts import render
+from .models import Bet, Team
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import HttpResponse
 
 # Create your views here.
 # http://localhost:8000
 def home(request):
-    return HttpResponse("<h1>Home page</h1>")
+    return render(request, "home.html")
 
 # http://localhost:8000
 def bets(request):
@@ -16,7 +17,9 @@ def bets(request):
 
 def bets_detail(request, bet_id):
   bets = Bet.objects.get(id=bet_id)
-  return render(request, 'bets/detail.html', { 'bets': bets })
+  teams_bets_doesnt_have = Team.objects.exclude(id__in=bets.teams.all().values_list('id'))
+  return render(request, 'bets/detail.html', { 'bets': bets, 
+  'teams' : teams_bets_doesnt_have})
 
 class BetsCreate(CreateView):
   model = Bet
@@ -38,4 +41,37 @@ class BetsUpdate(UpdateView):
 class BetsDelete(DeleteView):
   model = Bet
   success_url = '/bets/'
+
+# http://localhost:8000/toys/
+class TeamList(ListView):
+    model = Team
+
+# http://localhost:8000/team/1/
+class TeamDetail(DetailView):
+    model = Team
+
+
+# http://localhost:8000/team/create/
+class TeamCreate(CreateView):
+    model = Team
+    fields = '__all__'
+
+
+# http://localhost:8000/team/1/update/
+class TeamUpdate(UpdateView):
+    model = Team
+    fields = ['name', 'color']
+
+
+# http://localhost:8000/team/1/delete/
+class TeamDelete(DeleteView):
+    model = Team
+    success_url = '/team/'
+
+# http://localhost:8000/cats/2/assoc_toy/1/
+def assoc_team(request, bet_id, team_id):
+    # id = pk
+    # SELECT name FROM cats WHERE id=team
+    Bet.objects.get(id=bet_id).teams.add(team_id)
+    return redirect('detail', bet_id=bet_id)
     
