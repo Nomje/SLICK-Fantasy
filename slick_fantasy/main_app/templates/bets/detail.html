@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Bets Details</h1>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{ bets.name }}</span>
+    <p>Wager: {{ bets.wager }}</p>
+    <p>Total Score: {{ bets.total_score }}</p>
+  </div>
+</div>
+</div>
+<!-- Add the following markup -->
+<div class="card-action">
+  <a href="{% url 'bets_update' bets.id %}">Edit</a>
+  <a href="{% url 'bets_delete' bets.id %}">Delete</a>
+</div>
+<!-- New markup above -->
+</div>
+
+{% endblock %}
