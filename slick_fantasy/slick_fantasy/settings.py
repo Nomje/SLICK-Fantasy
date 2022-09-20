@@ -11,6 +11,13 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from pickle import FALSE
+
+import environ
+env = environ.Env()
+environ.Env.read_env()
+
+
 
 
 import environ
@@ -26,10 +33,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = env("SECRET_KEY")
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = FALSE
 
 ALLOWED_HOSTS = []
 
@@ -83,7 +92,7 @@ WSGI_APPLICATION = 'slick_fantasy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'SLICK',
+        'NAME': 'SLICK2',
         'USER': 'postgres',
         'PASSWORD': 'guest',
         'HOST': 'localhost',
@@ -126,7 +135,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # This variable to specifies where successful logins should redirect to
 LOGIN_REDIRECT_URL = '/bets/'

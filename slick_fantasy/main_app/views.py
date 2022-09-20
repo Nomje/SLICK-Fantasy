@@ -1,3 +1,6 @@
+from django.shortcuts import render, redirect
+import os
+
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
@@ -146,3 +149,5 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
     
+def some_function(request):
+    secret_key = os.environ['SECRET_KEY']
