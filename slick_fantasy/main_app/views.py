@@ -77,6 +77,8 @@ class TeamCreate(CreateView):
     model = Team
     fields = '__all__'
 
+    success_url = '/teams/'
+
 # Team Update
 # http://localhost:8000/teams/123/update/
 class TeamUpdate(UpdateView):
@@ -92,7 +94,7 @@ class TeamUpdate(UpdateView):
 # http://localhost:8000/teams/112/delete/
 class TeamDelete(DeleteView):
     model = Team
-    success_url = '/team/'
+    success_url = '/teams/'
 
 # Adding Teams to Bet
 # http://localhost:8000/bets/123/assoc_team/123/
