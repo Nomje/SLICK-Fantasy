@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1> User Bets</h1>
 
-    {% for bet in bets %}
-        <a href="{% url 'detail' bet.id %}">
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title">{{ bet.name }}</span>
-                    <p>Total Score: {{ bet.totat_score }}</p>
-                    <p>Wager: {{ bet.wager }}</p>
-                </div>
+<h1> User Bets</h1>
+
+{% for bet in bets %}
+    <a href="{% url 'detail' bet.id %}">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ bet.name }}</span>
+                <p>Total Score: {{ bet.totat_score }}</p>
+                <p>Wager: {{ bet.wager }}</p>
             </div>
-        </a>
-    {% endfor %}
+        </div>
+    </a>
+{% endfor %}
 
 {% endblock %}
