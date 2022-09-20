@@ -1,5 +1,6 @@
 from pickle import FALSE
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -16,6 +17,9 @@ class Bet(models.Model):
     wager = models.IntegerField()
 
     teams = models.ManyToManyField(Team)
+    # Add the foreign key linking to a user instance
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.name
