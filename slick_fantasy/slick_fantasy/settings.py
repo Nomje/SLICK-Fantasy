@@ -16,7 +16,7 @@ from pickle import FALSE
 import environ
 env = environ.Env()
 environ.Env.read_env()
-import django_on_heroku
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -140,5 +140,5 @@ LOGOUT_REDIRECT_URL = '/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
+import django_on_heroku
 django_on_heroku.settings(locals())
