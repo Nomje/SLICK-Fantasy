@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'SLICK',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'PASSWORD': 'guest',
         'HOST': 'localhost',
         'PORT': 5432
     }
