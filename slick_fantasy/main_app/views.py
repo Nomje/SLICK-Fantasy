@@ -66,7 +66,8 @@ class TeamUpdate(UpdateView):
 # http://localhost:8000/team/1/delete/
 class TeamDelete(DeleteView):
     model = Team
-    success_url = '/team/'
+    fields = []
+    success_url = '/teams/'
 
 # http://localhost:8000/cats/2/assoc_toy/1/
 def assoc_team(request, bet_id, team_id):
@@ -74,4 +75,12 @@ def assoc_team(request, bet_id, team_id):
     # SELECT name FROM cats WHERE id=team
     Bet.objects.get(id=bet_id).teams.add(team_id)
     return redirect('detail', bet_id=bet_id)
+    
+def remove_team(request, team_pk):
+    print('This is team id =========>' + team_id)
+    team_object = Team.objects.get(team_pk)
+    
+    bets = Bet()
+    bets.teams.remove(team_object)
+    return render(request, "bets.html", {'bets' : bets})
     

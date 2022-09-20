@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-content">
                         <span class="card-title">
-                            {{ team.name }}
+                            {{ team.name }} <a href="{% url 'teams_delete' bets.id %}">Delete</a>
                         </span>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
 <div class="card-action">
     <a href="{% url 'bets_update' bets.id %}">Edit</a>
     <a href="{% url 'bets_delete' bets.id %}">Delete</a>
-    <a href="{% url 'bets' %}">Add Teams</a>
+    <a href="{% url 'bets' %}">Add Teams</a> 
 </div>
 <!-- New markup above -->
 </div>
@@ -49,7 +49,7 @@
     <div class="card">
         <div class="card-content">
             <span class="card-title">
-                {{ team.name }}
+                {{ team.name }} 
             </span>
         </div>
         <div class="card-action">

@@ -23,5 +23,5 @@ urlpatterns = [
     # http://localhost:8000/teams/1/update/
     path('teams/<int:pk>/update/', views.TeamUpdate.as_view(), name='teams_update'),
     # http://localhost:8000/teams/1/delete/
-    path('teams/<int:pk>/delete/', views.TeamDelete.as_view(), name='teams_delete'),
+    path('teams/<int:pk>/delete/', views.remove_team, name='teams_delete'),
 ]
