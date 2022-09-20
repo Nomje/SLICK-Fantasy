@@ -81,7 +81,12 @@ class TeamCreate(CreateView):
 # http://localhost:8000/teams/123/update/
 class TeamUpdate(UpdateView):
     model = Team
-    fields = ['name', 'color']
+    fields = ['name', 'score']
+
+    def get_success_url(self, **kwargs):
+        # back to details page of bet
+        # path('teams/<int:pk>/', views.TeamDetail.as_view(), name='teams_detail'),
+        return reverse('teams_detail', args=(self.object.id,))
 
 # Team Delete
 # http://localhost:8000/teams/112/delete/
